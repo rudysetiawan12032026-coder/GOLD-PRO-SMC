@@ -7,8 +7,8 @@ close time is at or before the decision time; simulated entry is the next M1
 bar open. Output is diagnostic research, not a claim of a profitable strategy.
 
 Expected files: XAUUSD_M1.csv, XAUUSD_M5.csv, XAUUSD_M15.csv,
-XAUUSD_H1.csv, XAUUSD_H4.csv. Optional timeframe files are not required.
-Expected columns: Time,Open,High,Low,Close,TickVolume,Spread,RealVolume.
+XAUUSD_H1.csv, XAUUSD_H4.csv. Expected columns:
+Time,Open,High,Low,Close,TickVolume,Spread,RealVolume.
 """
 from __future__ import annotations
 
@@ -52,7 +52,6 @@ def load_bars(path: Path, tf: str) -> pd.DataFrame:
 def make_tf_vote(df: pd.DataFrame, tf: str) -> pd.DataFrame:
     close = df["Close"]
     ema = close.ewm(span=20, adjust=False, min_periods=20).mean()
-    # Require both price/EMA position and a rising/falling EMA; all inputs are closed bars.
     prior = ema.shift(3)
     vote = np.where((close > ema) & (ema > prior), 1,
                     np.where((close < ema) & (ema < prior), -1, 0))
@@ -66,7 +65,6 @@ def run(args: argparse.Namespace) -> dict:
     bars = {tf: load_bars(root / f"XAUUSD_{tf}.csv", tf) for tf in TF_MINUTES}
 
     m1 = bars["M1"].copy()
-    # Decisions happen on a just-closed M1 bar; execution is at the following M1 open.
     m1["DecisionAt"] = m1["AvailableAt"]
     m1["EntryTime"] = m1["Time"].shift(-1)
     m1["EntryOpen"] = m1["Open"].shift(-1)
@@ -85,7 +83,6 @@ def run(args: argparse.Namespace) -> dict:
     merged["signal"] = np.where(merged["bull_votes"] >= args.min_votes, 1,
                                 np.where(merged["bear_votes"] >= args.min_votes, -1, 0))
 
-    # Position exits are measured from next-bar open. Only contiguous M1 windows are included.
     m1_times = pd.Series(m1["Time"].to_numpy())
     m1_close = pd.Series(m1["Close"].to_numpy())
     m1_spread = pd.Series(m1["Spread"].to_numpy())
@@ -105,18 +102,15 @@ def run(args: argparse.Namespace) -> dict:
                 continue
             entry_time = m1_times.iloc[ei]
             exit_time = m1_times.iloc[xi]
-            # Exit at the close of the bar ending horizon minutes after entry.
             if exit_time + pd.Timedelta(minutes=1) - entry_time != pd.Timedelta(minutes=horizon):
-                continue  # skip market closures / missing-minute windows
+                continue
             entry = float(merged.at[row_idx, "EntryOpen"])
             exit_bid = float(m1_close.iloc[xi])
             entry_spread = max(0.0, float(merged.at[row_idx, "EntrySpread"])) * args.point
             exit_spread = max(0.0, float(m1_spread.iloc[xi])) * args.point
-            # Assumes OHLC are bid prices and MT5 Spread is quoted in points.
             gross = (exit_bid - entry) if sig > 0 else (entry - exit_bid)
             costs = entry_spread if sig > 0 else exit_spread
-            # Buy enters ask and exits bid; sell enters bid and exits ask.
-            net = gross - (entry_spread if sig > 0 else exit_spread)
+            net = gross - costs
             records.append({
                 "decision_time": merged.at[row_idx, "DecisionAt"],
                 "entry_time": entry_time,
@@ -134,7 +128,6 @@ def run(args: argparse.Namespace) -> dict:
             })
         pred = pd.DataFrame.from_records(records)
         if not pred.empty:
-            pred.insert(0, "horizon_minutes", horizon)
             all_predictions.append(pred)
             summaries.append({
                 "horizon_minutes": horizon,
