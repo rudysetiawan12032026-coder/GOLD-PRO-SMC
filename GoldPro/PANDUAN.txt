@@ -1,0 +1,276 @@
+PANDUAN PEMAKAIAN GOLDPRO (XAUUSD) - jam dalam WITA
+====================================================
+
+1. PEMASANGAN
+   - Pasang HANYA GoldPro_Main (folder GoldPro) di SATU chart XAUUSD timeframe M5.
+   - Jangan pasang GoldDayMap / SMC_Main / SMCI_Main di chart yang sama (dobel).
+   - Biarkan MT5 menyala selama market buka -> jurnal forward test mencatat otomatis
+     (panel: "Jurnal: AKTIF" hijau).
+   - Zona waktu: input "Zona waktu Anda" = 8 (WITA). Ganti ke 7 (WIB) / 9 (WIT) bila pindah.
+
+2. ARTI LABEL DI PANEL
+   [KOKOH]      stabil di SETIAP tahun 2016-2026 -> boleh diandalkan sebagai alat bantu.
+   [HIPOTESIS]  positif hanya 12 bulan terakhir (rezim volatil); rugi setelah biaya di 2017-2025.
+   [1 TH]       hanya teruji 1 tahun.
+   [INFO]       konteks saja, arahnya TIDAK terbukti (bias SMC, BOS/CHoCH).
+
+   ASAL GARIS & ANGKA (audit 27 Sep 2026, research\audit_lines.py):
+   - GARIS = HITUNGAN harga pasar, bukan tebakan:
+       EQ = (open + close kemarin) / 2      T1..T4 = open +/- 0.25/0.5/0.75/1.0 x ADR20
+       ADR20 = rata-rata (high-low) 20 hari terakhir. Dicek sama persis dengan data D1 broker.
+   - ANGKA % = PELUANG dari 250 hari sebelumnya. Dicek vs kejadian nyata 2017-2026:
+       target meleset rata-rata 1.5-4 poin/tahun, retest/pullback/lewat open +/-1 poin,
+       "duluan" +/-2 poin. Artinya angka yang tampil jujur, BUKAN petunjuk arah pasti.
+
+3. BAGIAN PANEL (atas ke bawah)
+   GOLDPRO / Open / Jam-1   : harga open hari ini, close kemarin, arah jam pertama.
+   Rezim vol x%             : ADR20 dibanding harga. >= 2% = TINGGI (kondisi satu-satunya
+                              di mana sinyal pernah positif). biaya/SL = spread+slippage vs SL.
+   TARGET [KOKOH]           : peluang historis T1..T4 tersentuh (searah / lawan jam pertama).
+   SINYAL/ENTRY [HIPOTESIS] : sekarang di HALAMAN 2 (lihat 3b & bagian 5). Header merah
+                              "Rezim rendah: JANGAN entry" bila vol < 2%.
+   LIVE [KOKOH]             : harga, sisa jam, garis terdekat atas/bawah:
+                              "duluan | s/d tutup" = peluang tersentuh duluan | sebelum hari tutup;
+                              EQ = peluang kembali ke garis tengah sebelum tutup.
+   SMC [INFO]               : bias H4/H1/M5, kondisi, keputusan (tidak terbukti -> info).
+   SESI                     : jam WITA, killzone berikutnya, berita, status jurnal.
+
+3b. INTERAKTIF (baru 27 Sep 2026)
+   KOTAK "i" (BARU 14 Okt 2026): di kanan tiap tombol ada kotak kecil "i". TOMBOL = GAMBAR di chart, "i" = INFO fitur itu.
+     Kotak Sideway : tombol = garis ATAP / LANTAI (+ titik mepet) | "i" = dashboard cerita & angka (kiri).
+     Tembus Balik  : tombol = panah tembusan + garis TARGET (hijau titik) & BATAL (merah titik) + label hasil di chart,
+                     hijau terang = JAM BAGUS | "i" = dashboard per jam + strip "TB |" di bawah chart.
+     Berita        : tombol = garis vertikal jam rilis (merah penting, oranye sedang, abu jam panas) | "i" = dashboard.
+     SMC           : tombol = visual SMC | "i" = kartu SMC INFO: bias, zona terdekat atas / bawah, BACA CANDLE terakhir di
+                     zona (colek lalu close balik / di dalam / 1-2 close di luar -> peluang BALIK atau TEMBUS + harga target
+                     1 ATR & batas tembus), tabel PETA ARAH uji 2017-26. Angkanya tepat, tapi sama di garis sembarang
+                     (= posisi close, bukan kekuatan zona) - INFO, bukan sinyal.
+     Target / Cad  : "i" = kartu status garis, peluang live, tangga target / harga & peluang garis cadangan.
+     1 PETA / 2 CEK SIAP / Probe / +PIN / Trade / Saldo : "i" = kartu cara baca + status (PIN: daftar PIN).
+     Satu kartu info umum terbuka sekaligus (klik "i" lain = pindah; klik judul kartu = tutup). Dashboard Kotak,
+     Tembus Balik & Berita bisa terbuka bersamaan dengan kartu.
+     Gelombang     : (BARU 14 Okt, tombol ke-14) tombol = PETA GELOMBANG lebar: pita merah Premium (5% atas range swing),
+                     abu Equilibrium (tengah), hijau Discount (5% bawah); garis merah puncak & hijau dasar (padat = Strong,
+                     putus = Weak); garis EMAS = gelombang awal (range kecil yang baru ditembus), ORANYE putus = BATAL (dasar
+                     pullback), BIRU titik = target 1.0 / 1.272 / 1.618 / 2.0 / 2.618 x gelombang awal dengan label KENA / batal /
+                     peluang sampai sebelum batal dari harga sekarang. Uji 2017-26: 64 / 57 / 47 / 39 / 30% saat tembus, separuh
+                     gelombang berhenti sebelum 1.55A. Angka tepat (= hitungan jarak), INFO peta, bukan sinyal. "i" = kartu angka.
+                     Gelombang nyala -> kotak Premium / OTE / EQ / Discount SMC lama disembunyikan (satu range saja). Gelombang
+                     "lama" (redup) = BOS terbaru belum bersih. Di chart M1 angka memakai uji M1. Uji maju: gelombang.csv,
+                     ringkasan KENA / harapan di kartu "i".
+                     - TELEGRAM SENTUH ZONA (16 Okt: M1 & M5, POLA 3 CANDLE): garis range M1 dan M5 (masing-masing sama
+                       dengan gambar Gelombang di chart TF itu). SATU pesan sesudah candle sentuh + 2 candle berikut TUTUP
+                       (M1: 3 mnt, M5: 15 mnt sesudah sentuh), hanya bila PINDAH ZONA. Baris "close: L x > D y > D z = LDD"
+                       (L = close lewat garis searah sentuhan, D = close kembali ke dalam) + nama pola + "lanjut tembus ke x: y% |
+                       balik ke z" dari close candle ke-3 + garis palsu. Uji 2017-26 (gel_candle3.py): SEMUA pola 48-52% (= garis
+                       palsu); 3 candle tidak lebih bisa dipercaya dari 1 candle -> INFO, bukan sinyal. Input: InpGTtfM1 / M5 /
+                       M15, InpGT1Candle (pesan candle sentuh tutup juga). Uji maju: gelombang_pola.csv.
+                       (15 Okt sore - versi lama, kini diganti pola 3 candle): SATU pesan saat candle sentuh TUTUP, hanya bila
+                       PINDAH ZONA (zona beda dari sentuhan sebelumnya; ~23 / hari: Premium 6, Equilibrium 11, Discount 6):
+                         bulat merah = PREMIUM (garis bawah kotak merah) | putih = EQUILIBRIUM | hijau = DISCOUNT (atas kotak hijau)
+                         isi: arah datang + zona sebelumnya, model candle tutup (TEMBUS KUAT / PIN BAR / ...), "lanjut tembus ke x:
+                         y% | balik ke z" (1 ATR), range M1.
+                       Peluang = uji 2017-26 (48-53%, garis palsu ~50%) -> INFO, bukan sinyal. Input indikator: InpGTfM1 / M5 /
+                       M15, InpGTZona (false = semua sentuhan ~135 / hari), InpGTAwal (pesan saat candle masih berjalan),
+                       InpGTKonf (pesan konfirmasi candle berikut). Uji maju: gelombang_sentuh.csv (SEMUA sentuhan).
+                       Baris "dari sini (jarak)": sentuh EQUILIBRIUM -> Premium dulu x% | Discount dulu y%; sentuh PREMIUM /
+                       DISCOUNT -> kembali ke Equilibrium dulu x% | ujung range (puncak / dasar) dulu y%.
+                     - KARTU "i" GELOMBANG: "PELUANG DARI HARGA SEKARANG": PREMIUM dulu x% | DISCOUNT dulu y% & EQUILIBRIUM
+                       dulu z% (15 Okt malam, uji 624 rb sampel M1: angka jarak = kenyataan, indikator menambah <= 1-2 poin).
+   TELEGRAM RAPI (15 Okt sore): satu pesan per kejadian, judul per kelompok (Kotak Sideway / Gelombang / Tembus Balik / GoldPro /
+     Saldo), baris pertama tebal. Saklar EA GoldPro_Telegram: Kotak baru & selesai, menyentuh atap / lantai (+ candle tutup), tembus
+     = NYALA; masuk lagi, mendekati, hasil peluang, peringatan (pecah / kembali 5 mnt, bertahan, akan berganti) = MATI; Gelombang
+     menyentuh = NYALA, hasil = MATI; Tembus Balik, rapor, alarm = NYALA.
+     Mode Teruji   : (BARU 14 Okt, tombol ke-15) satu klik: Gelombang + Target + Cadangan + Tembus Balik NYALA, semua kotak &
+                     label SMC lama MATI. Klik lagi = pilihan tombol sebelumnya kembali.
+     Label SMC (EQL / EQH / LIQ / Daily Open / BOS ...) tidak lagi menimpa tombol, kotak "i", label LIVE, kartu & dashboard:
+     label yang jatuh di area itu otomatis digeser ke kanannya (harga sama, hanya tampilan).
+   TOMBOL (DIRAPIKAN 10 Okt 2026: 17 -> 12 tombol, + Tembus Balik 11 Okt = 13; satu KOLOM VERTIKAL di tepi kiri, status diingat per chart):
+     1 PETA        = rute harga, LIVE, TANGGA TARGET hari ini (kena / belum + peluang), skor 3 hari, cek 20 hari,
+                     PIN, SMC, sesi. Klik lagi = TUTUP.
+     2 CEK SIAP    = rekap SIAP / TUNGGU (biaya, gerak, lokasi garis, berita, diri) + JAM BIAYA (jam murah / mahal,
+                     jadwal harian, menang minimum untuk impas).
+     Target / Cad80 / SMC / Probe / +PIN / Hapus PIN = saklar. SMC: label CHoCH / BOS / OB kini digeser otomatis
+                     bila menimpa label lain (posisi deteksi tidak berubah).
+     Berita        = dashboard berita USD & jam panas (kanan atas). Default tersembunyi.
+     Trade         = panel trading EA GoldPro_Panel (tanpa batasan sejak 9 Okt; baris "Batasan" menunjukkan yang aktif).
+     Saldo         = dashboard SALDO & TARGET HARIAN (EA GoldPro_Panel, kanan atas, huruf besar): saldo, equity, target
+                     % dari saldo AWAL HARI (akumulasi), bilah kemajuan, saklar ON/OFF (klik = geser). ON + target
+                     tercapai (hasil posisi yang sudah DITUTUP) = order baru dikunci s/d hari broker berikutnya (~05:00
+                     WITA): panel menolak, order tertunda dihapus, posisi yang dibuka sesudahnya (HP / One Click)
+                     langsung ditutup. Tombol jadi "Saldo ON" (hijau) / "Saldo KUNCI" (merah). Target % bisa diketik.
+     Kotak Sideway = dashboard kotak konsolidasi (kiri): dinding, target, tembus, kembali, daftar KENA.
+                     "Tembus sungguhan ... peluang x%" kini DIKOREKSI PER JAM (10 Okt, uji 10 th lebih tepat 10/10 tahun).
+                     Baris merah "[DICEK] 7 hr angka x% -> nyata y%" = angka itu sedang meleset di uji maju 7 hari
+                     terakhir, jadi disembunyikan (mode presisi); tampil lagi otomatis bila kembali wajar.
+     Tembus Balik  = (BARU 11 Okt, tombol ke-13, ungu) tembusan dinding kotak di JAM POSITIF 23:00-23:59 & 03:00-07:59 WITA
+                     lebih sering kembali ke TENGAH kotak (uji 2017-26). Saat aktif:
+                     - STRIP di bawah chart (kiri bawah, 3 baris "TB |"): status jam positif, LONJAKAN (volume M1 vs rata2 60
+                       candle, ATR5/ATR50 M1), M5 BELUM IKUT (RSI7 & kurva MACD 10,22,4 di M5) untuk tembus atas / bawah.
+                     - DASHBOARD (kiri, di kanan dashboard Kotak bila terbuka): kotak, rekap indikator, daftar tembusan per jam:
+                       "23:12 ATAS L+B 59% -> 4132.30 s/d 03:12" lalu hasil KENA (sampai tengah) / BATAL (lanjut 1 lebar
+                       kotak di luar dinding) / HABIS 4 jam. L+B = lonjakan + M5 belum ikut (balik 59%, acak 56%);
+                       "-" = tanpa konfirmasi (60%, acak 62% = cenderung lanjut). Baris "uji maju" = hasil nyata sejak dipasang.
+                     - TELEGRAM (EA GoldPro_Telegram, saklar "Tembus Balik"): kandidat (ikon panah ulang) + hasilnya.
+                     - CSV uji maju: MQL5\Files\GoldPro\tembus_balik.csv. 10 mnt sebelum rollover (04:50-04:59 WITA s/d akhir
+                       Okt) dilewati. Uang 2017-25 ~impas, 2026 +: INFO + uji maju, BUKAN sinyal; tidak membuka order.
+                     - JAM BAGUS (12 Okt, tanda bintang *): tembus BAWAH di jam pertama sesudah pasar buka lagi
+                       = 06:10-06:59 WITA (mulai 2 Nov: 07:10-07:59) -> harga balik NAIK ke tengah kotak 70% (acak 61%;
+                       2022-26 77%). Dashboard: baris "* JAM BAGUS ...", status "SEKARANG" / "berikut ... (sisa waktu)",
+                       kejadiannya ditandai "*" hijau. Strip: baris ke-4 "TB | * ...". "~ lemah" = tembus ATAS 07 WITA ->
+                       turun ke tengah 65% (acak 60%), tidak stabil. Jam 23 & 03-05 WITA = setara acak.
+                     - TELEGRAM JAM BAGUS (saklar EA "Tembus Balik JAM BAGUS"): weker+bintang = jam bagus mulai (sekali
+                       sehari, 06:10 WITA), bintang = tembus BAWAH terjadi (TARGET / BATAL / YAKIN), centang / silang /
+                       jam pasir + bintang = hasil.
+                     - PASAR TUTUP tiap hari 04:55-06:00 WITA (mulai 2 Nov 05:55-07:00): status "PASAR TUTUP (jeda harian)".
+                       5 mnt pertama sesudah buka harga melompat - angka di menit itu tidak bisa dipercaya.
+     DIBUANG 10 Okt (tidak terbukti / dobel): 3 KOTAK, Radar, Panah, Zona OB/FVG, blok ENTRY [HIPOTESIS].
+   PENJAGA SISTEM (10 Okt 2026):
+     CHART UTAMA   = bila GoldPro dipasang di beberapa chart, hanya SATU (yang pertama) yang mengirim Telegram, mencatat
+                     uji maju, rapor & alert popup -> tidak dobel, MT5 lebih ringan. Chart utama ditutup / ganti TF ->
+                     chart lain mengambil alih otomatis (<= 20 dtk). Log Experts menulis "CHART UTAMA" / "chart tampilan".
+     SUSULAN       = kejadian yang terlewat saat ganti TF / MT5 macet (<= 30 mnt) tetap dikirim ke Telegram, bertanda SUSULAN.
+     BARIS MERAH KIRI BAWAH (hanya muncul bila ada masalah):
+                     "GoldPro chart ini VERSI LAMA" -> ganti TF sekali (M1 > M5 > M1).
+                     "EA GoldPro_Panel / Telegram VERSI LAMA" -> lepas lalu pasang ulang EA itu.
+                     "EA Telegram berhenti sejak hh:mm" -> pesan tertahan; pasang lagi EA Telegram.
+                     "ALARM angka 7 hari: ..." -> angka yang sedang disembunyikan (lihat dashboard Kotak / rapor).
+     TELEGRAM      = pesan ALARM / PULIH angka, baris "Cek angka 7 hari" di rapor pagi, dan "GoldPro BERHENTI" bila
+                     indikator tidak hidup >= 15 mnt saat pasar buka (MT5 tertutup / PC mati TIDAK bisa dilaporkan).
+   LABEL LIVE (di samping tombol 1 PETA, selalu tampil, diperbarui tiap menit):
+     "LIVE: LONDON | UPTREND" = sesi sekarang + kondisi 60 menit terakhir.
+     Sesi (WITA s/d akhir Okt): ASIA 06-15, LONDON 15-20, LONDON+NY 20-23:30, NEW YORK 23:30-05.
+     Kondisi: KONSOLIDASI (biru) / UPTREND (hijau) / DOWNTREND (merah) / BERGEJOLAK (oranye) / NORMAL.
+     Tambahan 15 menit: "15m SIDEWAY" = 15 mnt terakhir sangat sempit untuk jam itu; "15m JEDA" = setelah jam
+     yang ramai, harga berhenti sejenak (rentang 15 mnt <= 35% rentang 60 mnt). Contoh: "ASIA | UPTREND | 15m JEDA".
+     Arahkan mouse ke label -> rincian. INGAT: UPTREND/DOWNTREND = gambaran 60 menit TERAKHIR; uji 10 th:
+     arah 1 jam berikut lanjut hanya 47-49% (acak), yang terbukti hanya keramaiannya (tren 1.3x, sideway 0.8x).
+     Hijau/biru = menyala. SMC = visual SMC lengkap (INFO, belum terbukti).
+   PULLBACK LEG (hal. 1, M5 & M15) [KOKOH]: leg terakhir (lembah->puncak atau sebaliknya, >= 4 ATR) dan
+     "tarik x% -> lanjut (100-x)% | balik x%". Uji 10 th: peluang puncak baru = 100% - kedalaman pullback,
+     tepat +/-1 poin; level Fibonacci tidak istimewa. Bila leg lama sudah tertembus -> tampil gerak berjalan.
+   GARIS CADANGAN 80% (warna khaki, putus-titik) [KOKOH]:
+     garis terjauh di atas & bawah harga yang 80% tersentuh sebelum hari tutup.
+     Uji 2017-2026 (230 rb titik): tersentuh 80.2% atas / 79.4% bawah, tiap tahun 77-82%.
+     Dihitung ulang tiap candle M5 close. Sisa < 1 jam -> disembunyikan (akurasi turun ke ~70%).
+     Persen bisa diganti di input (60-95).
+   PROBE: arahkan mouse ke harga mana saja -> kotak kecil menampilkan jarak ($ & ADR) dan
+     peluang tersentuh s/d tutup. Uji 2017-2026: tampil vs nyata meleset rata-rata 0.3-1.5 poin.
+   PIN: tekan "+PIN", lalu klik harga di chart -> garis ungu. Label kanan menampilkan peluang
+     live tiap 2 detik. Harga menyentuh PIN -> alert + tulisan KENA jam WITA.
+     Geser: klik dua kali garis lalu tarik. Hapus: pilih garis + Delete, atau tombol "Hapus PIN".
+     PIN tetap ada saat ganti timeframe.
+   TOOLTIP: arahkan mouse ke garis T1-T4, EQ, pita, panah, garis cadangan -> muncul rumus
+     hitungan, peluang historis, dan peluang live.
+   T1 SALAH SATU (panel): T1 atas ATAU bawah tersentuh 98-99.6% hari tiap tahun 2017-2026;
+     keduanya 32-40%.
+   GARIS T0 (baru 1 Okt 2026, garis putus-titik-titik di antara EQ dan T1) [KOKOH]:
+     T0 atas = (EQ + T1 atas) / 2, T0 bawah = (EQ + T1 bawah) / 2  (~open +/- 0.125 ADR, 2026 ~$13).
+     Uji 2017-2026 (research\t0_test.py): salah satu sisi tersentuh 100% hari (tiap tahun 99.6-100%),
+     keduanya 66% (2026: 58%); searah jam pertama 91% / lawan 76%.
+     Biasanya tersentuh cepat: median 2.6 jam (atas) / 3.5 jam (bawah) setelah open; 57% sentuhan
+     pertama terjadi 06:00-10:00 WITA. Belum tersentuh setelah 4 jam -> 66%, 8 jam -> 56%, 12 jam -> 41%.
+     T0 PERTAMA (sisi mana pun) setelah market buka: median ~2 jam (08:00 WITA bila buka 06:00);
+     dalam 1 jam 30%, 2 jam 49%, 3 jam 72%, 4 jam 88%, 8 jam 97%. T0 kedua (bila dua2 kena) median ~9 jam.
+     PENTING: setelah T0 tersentuh, lanjut ke T1 dulu 50.1% vs balik ke EQ dulu = KOIN (tiap tahun 44-54%).
+     Jadi T0 = target/peta paling pasti hari itu, BUKAN titik entry (ikut atau lawan dari T0: rugi setelah spread).
+     Panel hal. 1: "T0 srh/lwn salah1 dua2 [status hari ini]"; tangga hal. 2 ikut menampilkan T0.
+   GARIS OPEN NY 09:30 ET (baru 1 Okt 2026, titik-titik toska; 21:30 WITA s/d akhir Okt, 22:30 musim dingin AS):
+     harga pembukaan bursa saham New York. Uji 2017-2026 (research\ict_tests.py): +4.4 poin lebih sering
+     didatangi lagi dibanding level biasa berjarak sama, 9/10 tahun (= magnet, seperti open harian & close
+     kemarin). 250 hari terakhir: setelah menjauh >= 0.05 ADR, kembali disentuh s/d tutup ~78%.
+     Status: "dekat" (belum menjauh) / "tutup x%" (peluang kembali) / "KEMBALI". INFO level, bukan sinyal entry.
+     Midnight open ICT (00:00 ET) TIDAK ditampilkan: bukan magnet (-3.5).
+     Input: DMInpShowT0, DMInpShowNYOpen, DMInpNYOpenColor. Ikut tombol "Target".
+   GERAK: HARI x.x | 2J x.x (panel LIVE & halaman 2):
+     hari = rentang harga hari ini dibanding rentang biasa pada jam yang sama; 2j = rentang 2 jam terakhir
+     dibanding 2 jam biasa pada jam itu (naik cepat setelah rilis berita). 1.0 = normal, >= 1.4 tinggi,
+     >= 1.8 SANGAT, < 0.7 sepi. Semua peluang live, garis cadangan, probe & PIN otomatis disesuaikan
+     (pasar ramai -> gerak lanjutan lebih jauh ke DUA arah; arah tetap tidak ditebak).
+   PUNCAK / DASAR TAHAN xx% (LIVE hal. 1, "Tahan:" hal. 2):
+     peluang high/low hari ini TIDAK tertembus lagi sampai market tutup, dari jarak harga ke high/low
+     dan sisa jam (tabel khusus 250 hari). Patokan uji 2017-26 untuk 90% bertahan: sisa 2-6 jam ~$29,
+     sisa 6-12 jam ~$74, pagi (12-24 jam) tidak pernah 90%. % Fibonacci kurang tepat dibanding jarak $.
+   !! KOREKSI 29 Sep malam: angka uji di bawah KELIRU (entry dianggap di garis). Dengan entry realistis
+      ikut tembus hanya ~52% dan ~impas, fade ~48% -> ujung kotak TIDAK memberi keunggulan.
+      KEPUTUSAN: tab 3 = PETA INFO saja - kotak M5 & M1 (atas / EQ / bawah, jarak, umur kotak, posisi harga,
+      jumlah sentuhan hari ini). Tanpa BUY/SELL, tanpa TP/SL. Alert sinyal dihapus; ada alert "sentuhan"
+      netral (input, default mati). Teks di bawah hanya riwayat.
+   [10 Okt 2026: tab "3 KOTAK" & halaman "2 ENTRY & TARGET" DIBUANG - tangga target, skor & cek 20 hari pindah ke
+    halaman 1 PETA; blok ENTRY dibuang. Teks di bawah hanya riwayat.]
+   TAB "3 KOTAK" - SINYAL KOTAK SMC M5 & M1, IKUT TEMBUS [TIDAK TERBUKTI] (29 Sep 2026):
+     Kotak = dealing range SMC (leg swing terbaru >= ATR14), dihitung sendiri untuk M5 DAN M1
+     (jalan di chart TF apa pun). Harga menyentuh ujung ATAS -> BUY (pasang BUY STOP di garis atas);
+     menyentuh garis BAWAH -> SELL (SELL STOP di garis bawah). TP = SL = 1 x ATR14 TF itu.
+     Uji 2016-26: di ujung kotak harga MENEMBUS 57-63% tiap tahun (fade/berbalik hanya 38-44%).
+     Setelah spread: rugi 2016-22, impas 2023-24, untung 2025 (+0.10R) & 2026 (+0.14R); belum termasuk
+     slippage -> hipotesis. "biaya" = spread/TP: hijau <= 8% (kondisi 2025-26), merah > 14% (kondisi rugi).
+     Garis kotak M5 (tebal) & M1 (titik-titik) tampil di chart saat tab 3 aktif. Alert M5 & M1 terpisah
+     (input), M1 ~5 sinyal/jam. Semua sinyal dicatat di jurnal_box.csv -> evaluate_journal.py bagian 6.
+   PANEL 2 HALAMAN (tab di bawah tombol):
+     "1 PETA"            = statistik target, LIVE, PIN, SMC, sesi (seperti sebelumnya, tanpa blok sinyal).
+     "2 ENTRY & TARGET"  =
+       - ENTRY [HIPOTESIS]: straddle, breakout Asia, AM Fix (harga entry/SL/TP/lot, status).
+       - TARGET HARI INI: tangga T4 atas ... T4 bawah + EQ, urut dari harga tertinggi, dengan
+         ">> HARGA <<" di posisinya. Sudah kena -> "KENA jam WITA" (berwarna); belum -> "belum xx%"
+         (peluang kena s/d tutup, berubah tiap candle M5). Hari selesai -> "tidak kena".
+       - Garis cadangan 80% saat ini.
+       - SKOR 3 HARI: target terjauh yang kena di atas & bawah tiap hari.
+       - CEK 20 HARI: akurasi garis cadangan di 20 hari terakhir (hijau bila dekat 80%, merah bila
+         meleset > 8 poin = pasar sedang tidak normal) + hit T1/T2 20 hari vs 250 hari.
+
+4. JADWAL HARIAN (WITA)          sekarang (s/d 25 Okt)   musim dingin (mulai 2 Nov)
+   Market buka                   06:00                   07:00
+   Straddle dipasang (menit 5)   06:05                   07:05
+   Box Asia selesai              15:00                   16:00
+   Jendela breakout Asia         15:00 - 23:00           16:00 - 24:00
+   AM Fix SELL                   17:20 - 17:29           18:20 - 18:29
+   Rilis data AS                 20:30                   21:30
+   Tutup posisi Asia             04:00                   05:00
+   Market tutup                  05:00                   06:00
+   Minggu 25 Okt - 1 Nov: London sudah jam musim dingin, AS belum -> AM Fix ikut kolom
+   musim dingin (18:20). Selalu ikuti jam yang tertulis di panel.
+
+5. ATURAN SINYAL [HIPOTESIS] (persis seperti yang diuji)
+   A. STRADDLE EQ
+      - 06:05 WITA pasang BUY STOP & SELL STOP (harga di panel). SL keduanya = EQ.
+      - TP = 1.5 x jarak SL (harga TP di panel).
+      - Begitu satu terisi -> BATALKAN order lawan (OCO).
+      - Belum kena TP/SL -> tutup saat hari trading berakhir.
+      - Status "DILEWATI" = harga sudah di luar zona saat menit ke-5 -> tidak ada trade.
+   B. BREAKOUT ASIA
+      - Box = high/low sejak market buka s/d 15:00 WITA.
+      - Candle M5 pertama yang CLOSE di luar box (15:00-23:00) -> entry di candle berikutnya
+        (panel: "BUY/SELL @harga").
+      - SL = tengah box, TP = 1.5R, tutup paksa 04:00 WITA.
+      - Maksimal 1 sinyal per hari.
+   C. AM FIX
+      - SELL di harga pasar 17:20 WITA, tutup 17:29 WITA. Tanpa SL/TP (hanya 9 menit).
+   Hasil uji: tahun riset positif, 2017-2025 RUGI setelah biaya (straddle -0.17R,
+   Asia -0.10R, AM Fix menang 29%). Positif hanya saat rezim vol >= 2%.
+
+6. ALERT
+   Default MATI. Nyalakan di input "GoldPro: Alert" (Straddle / Breakout Asia / AM Fix /
+   Berita). Push ke HP: nyalakan "Push ke HP" + isi MetaQuotes ID di
+   Tools > Options > Notifications.
+
+7. YANG SENGAJA DISEMBUNYIKAN (tidak presisi di uji)
+   Premium/Discount/OTE, EQH/EQL/PDH/PDL, zona Paus, dashboard SMC lama, garis straddle,
+   breaker & rencana LIMIT. Semua bisa dinyalakan di input bila ingin dilihat.
+   Cara cepat: input "Mode tampilan" = "Lengkap SMC" -> semua visual SMC lama tampil
+   (Premium/Discount/OTE, Pijakan/Tujuan, EQL/EQH/SWEPT, PDH/PDL, zona Paus, killzone)
+   dengan jam sesi yang sudah benar. Sifatnya [INFO]: tidak terbukti menambah presisi.
+
+8. EVALUASI FORWARD TEST (setelah +/- 20 hari trading)
+   MT5 terbuka, lalu jalankan:
+     python "MQL5\Files\GoldDayMap\evaluate_journal.py"
+   Laporan: MQL5\Files\GoldDayMap\evaluate_report.txt
+     1   peluang tersentuh: ditampilkan vs kenyataan
+     4   straddle, 4b breakout Asia, 4c AM Fix  (dipisah per rezim)
+     5   breaker (dicatat walau tidak ditampilkan)
+
+9. FILE PENTING
+   GoldPro_Main.mq5          indikator utama
+   README.txt                riwayat riset & semua hasil uji
+   PANDUAN.txt               dokumen ini
+   MQL5\Files\GoldDayMap\    jurnal forward test + script evaluasi
